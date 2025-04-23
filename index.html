@@ -1,47 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Notes</title>
+  <title>محاسبه حجم CBM</title>
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Firebase compat SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <main class="container">
-    <h1>📝 My Notes</h1>
+  <div class="container">
+    <div class="card">
+      <h2>محاسبه حجم CBM</h2>
 
-    <section id="login-box" class="box">
-      <input type="email" id="email" placeholder="Email" />
-      <input type="password" id="password" placeholder="Password" />
-      <div class="buttons">
-        <button onclick="login()">Login</button>
-        <button onclick="signup()">Sign Up</button>
-      </div>
-    </section>
+      <label>طول (سانتی‌متر)</label>
+      <input type="number" id="length" />
 
-    <section id="notes-box" class="box hidden">
-      <textarea id="note-input" placeholder="Write your note..."></textarea>
-      <div class="buttons">
-        <button onclick="addNote()">Add Note</button>
-        <button onclick="logout()">Logout</button>
-      </div>
-      <ul id="notes-list"></ul>
-    </section>
-  </main>
+      <label>عرض (سانتی‌متر)</label>
+      <input type="number" id="width" />
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyB1uHOhMyvXYG4N5I5BHurOlAPt74510TI",
-      authDomain: "my-notes-app-4614.firebaseapp.com",
-      projectId: "my-notes-app-4614",
-    };
-    firebase.initializeApp(firebaseConfig);
-  </script>
-  <script src="app.js"></script>
+      <label>ارتفاع (سانتی‌متر)</label>
+      <input type="number" id="height" />
+
+      <label>تعداد</label>
+      <input type="number" id="quantity" value="1"/>
+
+      <button id="calc-btn">محاسبه</button>
+      <button id="clear-btn">پاک کردن</button>
+
+      <div class="result" id="result">حجم: </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

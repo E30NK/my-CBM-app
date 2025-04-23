@@ -1,76 +1,87 @@
+@font-face {
+    font-family: 'Vazirmatn';
+    src: url(./font/Vazirmatn-Medium.ttf);
+
+
+}
+
+/* اعمال box-sizing برای همه المان‌ها */
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* تنظیمات کلی برای بدنه */
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f5f6fa;
-    margin: 0;
-    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+    background: #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    direction: rtl;
 }
 
+/* کانتینر اصلی که تمام محتوا رو داخل خودش قرار می‌ده */
 .container {
     width: 100%;
-    max-width: 400px;
-    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* تنظیمات برای کارت */
+.card {
+    background: white;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: right;
 }
 
-h1 {
-    text-align: center;
-    color: #2f3640;
-}
-
-.box {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.buttons {
-    display: flex;
-    gap: 10px;
-}
-
-input,
-textarea,
-button {
-    font-size: 1rem;
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #dcdde1;
+/* تنظیمات برای ورودی‌ها */
+input {
     width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    /* فاصله‌ی یکنواخت برای تمام ورودی‌ها */
+    border: 1px solid #ccc;
+    border-radius: 6px;
 }
 
+/* تنظیمات دکمه‌ها */
 button {
-    background-color: #00a8ff;
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
     color: white;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    margin-top: 10px;
+    font-family: 'Vazirmatn';
 }
 
 button:hover {
-    background-color: #0097e6;
+    background: #218838;
 }
 
-textarea {
-    resize: none;
+button#clear-btn {
+    background: #dc3545;
+    /* رنگ قرمز برای دکمه پاک کردن */
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+button#clear-btn:hover {
+    background: #c82333;
 }
 
-ul li {
-    background: #f1f2f6;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 8px;
-}
-
-.hidden {
-    display: none;
+/* نتیجه محاسبه */
+.result {
+    margin-top: 12px;
+    font-weight: bold;
 }
