@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Notes</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Firebase compat SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>📝 My Notes</h1>
+
+    <section id="login-box" class="box">
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="password" placeholder="Password" />
+      <div class="buttons">
+        <button onclick="login()">Login</button>
+        <button onclick="signup()">Sign Up</button>
+      </div>
+    </section>
+
+    <section id="notes-box" class="box hidden">
+      <textarea id="note-input" placeholder="Write your note..."></textarea>
+      <div class="buttons">
+        <button onclick="addNote()">Add Note</button>
+        <button onclick="logout()">Logout</button>
+      </div>
+      <ul id="notes-list"></ul>
+    </section>
+  </main>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyB1uHOhMyvXYG4N5I5BHurOlAPt74510TI",
+      authDomain: "my-notes-app-4614.firebaseapp.com",
+      projectId: "my-notes-app-4614",
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>
