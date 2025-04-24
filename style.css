@@ -15,7 +15,6 @@
 html,
 body {
     height: 100%;
-    overflow: hidden;
 }
 
 body {
@@ -28,7 +27,6 @@ body {
     margin: 0;
     direction: rtl;
     padding: 20px;
-    overflow-y: auto;
 }
 
 /* Layout */
@@ -38,7 +36,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0;
 }
 
 .card {
@@ -48,7 +45,6 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 100%;
     text-align: right;
-    margin: 0;
 }
 
 .card-title {
@@ -395,42 +391,77 @@ option[value=""] {
 /* Responsive Styles */
 @media (max-width: 768px) {
     body {
-        padding: 5px;
-        height: 100vh;
-        overflow: hidden;
+        padding: 10px;
     }
 
     .container {
-        height: 100%;
-        padding: 0;
+        width: 100%;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    .mode-buttons {
+        margin: 10px 0 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+    }
+
+    .input-group label {
+        margin-bottom: 5px;
+    }
+
+    .container-info {
+        margin: 15px 0;
+        padding: 10px;
+    }
+
+    .result {
+        margin-top: 12px;
+    }
+
+    .designer-inf {
+        margin-top: 40px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+    }
+
+    input, select {
+        padding: 10px;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 5px;
     }
 
     .card {
         padding: 10px;
-        height: auto;
-        max-height: 100vh;
-        overflow-y: auto;
     }
 
     .mode-buttons {
-        margin: 5px 0 10px;
+        margin: 8px 0 15px;
     }
 
     .input-group {
-        margin-bottom: 8px;
-    }
-
-    .input-group label {
-        margin-bottom: 3px;
+        margin-bottom: 12px;
     }
 
     .container-info {
-        margin: 10px 0;
+        margin: 12px 0;
         padding: 8px;
     }
 
     .result {
-        margin-top: 8px;
+        margin-top: 10px;
     }
 
     .designer-inf {
@@ -442,51 +473,8 @@ option[value=""] {
         padding: 8px;
     }
 
-    input,
-    select {
+    input, select {
         padding: 8px;
         margin: 4px 0;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 3px;
-    }
-
-    .card {
-        padding: 8px;
-    }
-
-    .mode-buttons {
-        margin: 4px 0 8px;
-    }
-
-    .input-group {
-        margin-bottom: 6px;
-    }
-
-    .container-info {
-        margin: 8px 0;
-        padding: 6px;
-    }
-
-    .result {
-        margin-top: 6px;
-    }
-
-    .designer-inf {
-        margin-top: 20px;
-    }
-
-    button {
-        margin-top: 6px;
-        padding: 6px;
-    }
-
-    input,
-    select {
-        padding: 6px;
-        margin: 3px 0;
     }
 }
