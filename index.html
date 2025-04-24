@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محاسبه حجم CBM</title>
-  <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <h2>محاسبه حجم CBM</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاسبه حجم CBM</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2 class="card-title">محاسبه حجم CBM</h2>
 
-      <label>طول (سانتی‌متر)</label>
-      <input type="number" id="length" />
+        <label>طول (سانتی‌متر)</label>
+        <input type="number" id="length" />
 
-      <label>عرض (سانتی‌متر)</label>
-      <input type="number" id="width" />
+        <label>عرض (سانتی‌متر)</label>
+        <input type="number" id="width" />
 
-      <label>ارتفاع (سانتی‌متر)</label>
-      <input type="number" id="height" />
+        <label>ارتفاع (سانتی‌متر)</label>
+        <input type="number" id="height" />
 
-      <label>تعداد</label>
-      <input type="number" id="quantity" value="1"/>
+        <label>تعداد</label>
+        <input type="number" id="quantity" value="1" />
 
-      <button id="calc-btn">محاسبه</button>
-      <button id="clear-btn">پاک کردن</button>
+        <button id="calc-btn">محاسبه</button>
+        <button id="clear-btn">پاک کردن</button>
 
-      <div class="result" id="result">حجم: </div>
+        <div class="result" id="result">حجم:</div>
+
+        <h4 class="designer-inf">طراحی و توسعه توسط: E30NK</h4>
+      </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

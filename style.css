@@ -44,6 +44,10 @@ body {
     text-align: right;
 }
 
+.card-title {
+    text-align: center;
+}
+
 /* تنظیمات برای ورودی‌ها */
 input {
     width: 100%;
@@ -65,11 +69,19 @@ button {
     cursor: pointer;
     margin-top: 10px;
     font-family: 'Vazirmatn';
+
 }
 
-button:hover {
+/* button:hover {
     background: #218838;
+} */
+
+button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
 }
+
+
 
 button#clear-btn {
     background: #dc3545;
@@ -84,4 +96,12 @@ button#clear-btn:hover {
 .result {
     margin-top: 12px;
     font-weight: bold;
+    
+
+}
+.designer-inf{
+    margin-top: 60px;
+    color: #978d8d;
+    text-align: center;
+    font-size: 10px;
 }
