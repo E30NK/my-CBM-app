@@ -168,4 +168,82 @@ button#clear-weight-btn {
 button#back-to-volume {
     background: #5f7174;
 
+
+}
+
+.input-row {
+    display: flex;
+    /* ورودی‌ها را در یک ردیف قرار می‌دهد */
+    justify-content: space-between;
+    /* فاصله یکنواخت بین ورودی‌ها */
+    align-items: center;
+    /* ترازبندی عمودی */
+    gap: 10px;
+    /* فاصله بین گروه‌ها */
+}
+
+.input-group {
+    flex: 1;
+    /* اندازه مساوی برای هر گروه */
+}
+
+.input-group label {
+    display: block;
+    /* نمایش برچسب بالای ورودی */
+    margin-bottom: 5px;
+    /* فاصله بین برچسب و ورودی */
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    /* ورودی تمام عرض گروه را اشغال می‌کند */
+    padding: 8px;
+    /* فاصله داخلی برای ورودی */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+.input-row {
+    display: flex;
+    /* نمایش المان‌ها در یک ردیف */
+    justify-content: space-between;
+    /* فاصله یکنواخت بین المان‌ها */
+    align-items: center;
+    /* تراز عمودی */
+    gap: 10px;
+    /* فاصله بین فیلدها */
+}
+
+.input-group {
+    flex: 1;
+    /* هر گروه اندازه مساوی خواهد داشت */
+}
+
+.input-group label {
+    display: block;
+    /* نمایش برچسب‌ها بالای ورودی */
+    font-family: 'Vazirmatn', sans-serif;
+    /* استفاده از فونت هماهنگ */
+    font-size: 12px;
+    /* اندازه فونت کوچک‌تر */
+    margin-bottom: 5px;
+    /* فاصله پایین برچسب */
+    text-align: center;
+    /* تراز متن برچسب */
+}
+
+.input-group input {
+    width: 100%;
+    /* ورودی به اندازه کامل ظرف خود */
+    padding: 8px;
+    font-size: 12px;
+    /* اندازه فونت ورودی کوچک‌تر */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+    /* متن ورودی در مرکز */
+    font-family: 'Vazirmatn', sans-serif;
+    /* فونت هماهنگ */
 }

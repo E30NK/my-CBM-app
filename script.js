@@ -1,92 +1,53 @@
-// متغیر برای دکمه‌های انتخاب حالت (حجم / وزن)
-const volumeModeButton = document.getElementById("volume-mode");
-const weightModeButton = document.getElementById("weight-mode");
+// اطمینان از اینکه کد بعد از بارگذاری کامل المان‌های HTML اجرا می‌شود
+document.addEventListener("DOMContentLoaded", function () {
+  // انتخاب دکمه محاسبه
+  const calcBtn = document.getElementById("calc-btn");
 
-// کارت‌های حجم و وزن
-const volumeCard = document.getElementById("volume-card");
-const weightCard = document.getElementById("weight-card");
+  // انتخاب نمایش نتیجه
+  const resultDiv = document.getElementById("result");
 
-// تغییر حالت (حجم یا وزن)
-volumeModeButton.addEventListener("click", () => {
-  // نمایش کارت حجم و مخفی کردن کارت وزن
-  volumeCard.style.display = "block";
-  weightCard.style.display = "none";
+  // عملکرد دکمه محاسبه
+  calcBtn.addEventListener("click", function () {
+    // گرفتن مقادیر از ورودی‌ها
+    const length = parseFloat(document.getElementById("length").value);
+    const width = parseFloat(document.getElementById("width").value);
+    const height = parseFloat(document.getElementById("height").value);
+    const quantity = parseInt(document.getElementById("quantity").value);
 
-  // تغییر دکمه‌ها
-  volumeModeButton.classList.add("active");
-  weightModeButton.classList.remove("active");
-});
+    // بررسی معتبر بودن مقادیر
+    if (
+      isNaN(length) ||
+      isNaN(width) ||
+      isNaN(height) ||
+      isNaN(quantity) ||
+      length <= 0 ||
+      width <= 0 ||
+      height <= 0 ||
+      quantity <= 0
+    ) {
+      alert("لطفاً تمام مقادیر را به درستی وارد کنید (باید اعداد مثبت باشند).");
+      return;
+    }
 
-weightModeButton.addEventListener("click", () => {
-  // نمایش کارت وزن و مخفی کردن کارت حجم
-  volumeCard.style.display = "none";
-  weightCard.style.display = "block";
+    // محاسبه حجم بر اساس طول، عرض، ارتفاع و تعداد
+    const cbm = ((length * width * height) / 1000000) * quantity;
 
-  // تغییر دکمه‌ها
-  weightModeButton.classList.add("active");
-  volumeModeButton.classList.remove("active");
-});
-
-// محاسبه برای حجم
-document.getElementById("calc-btn").addEventListener("click", function () {
-  const length = parseFloat(document.getElementById("length").value);
-  const width = parseFloat(document.getElementById("width").value);
-  const height = parseFloat(document.getElementById("height").value);
-  const quantity = parseInt(document.getElementById("quantity").value);
-
-  // بررسی وارد کردن مقادیر صحیح
-  if (isNaN(length) || isNaN(width) || isNaN(height) || isNaN(quantity)) {
-    alert("لطفاً تمام مقادیر را به‌درستی وارد کنید.");
-    return;
-  }
-
-  // محاسبه حجم
-  const cbm = ((length * width * height) / 1000000) * quantity;
-  document.getElementById("result").innerText = `حجم کل: ${cbm.toFixed(
-    4
-  )} متر مکعب`;
-});
-
-// محاسبه برای وزن
-document
-  .getElementById("weight-calc-btn")
-  .addEventListener("click", function () {
-    const quantity = parseInt(document.getElementById("weight-quantity").value);
-    const selectedProduct =
-      document.getElementById("product-select").options[
-        document.getElementById("product-select").selectedIndex
-      ];
-    const productWeight = parseInt(selectedProduct.getAttribute("data-weight"));
-
-    // محاسبه وزن
-    const totalWeight = productWeight * quantity;
-    document.getElementById(
-      "weight-result"
-    ).innerText = `وزن کل: ${totalWeight} کیلوگرم`;
+    // نمایش نتیجه در بخش مربوطه
+    resultDiv.innerText = `حجم کل: ${cbm.toFixed(4)} متر مکعب`;
   });
 
-// دکمه پاک کردن برای کارت حجم
-document.getElementById("clear-btn").addEventListener("click", function () {
-  document.getElementById("length").value = "";
-  document.getElementById("width").value = "";
-  document.getElementById("height").value = "";
-  document.getElementById("quantity").value = "1";
-  document.getElementById("result").innerText = "حجم:";
-});
+  // انتخاب دکمه پاک کردن
+  const clearBtn = document.getElementById("clear-btn");
 
-// دکمه پاک کردن برای کارت وزن
-document
-  .getElementById("clear-weight-btn")
-  .addEventListener("click", function () {
-    document.getElementById("weight-quantity").value = "1";
-    document.getElementById("weight-result").innerText = "وزن:";
+  // عملکرد دکمه پاک کردن
+  clearBtn.addEventListener("click", function () {
+    // پاک کردن مقادیر ورودی‌ها
+    document.getElementById("length").value = "";
+    document.getElementById("width").value = "";
+    document.getElementById("height").value = "";
+    document.getElementById("quantity").value = "1";
+
+    // بازنشانی نتیجه
+    resultDiv.innerText = "حجم:";
   });
-document.getElementById("back-to-volume").addEventListener("click", () => {
-  // نمایش کارت حجم و مخفی کردن کارت وزن
-  volumeCard.style.display = "block";
-  weightCard.style.display = "none";
-
-  // تغییر دکمه‌ها
-  volumeModeButton.classList.add("active");
-  weightModeButton.classList.remove("active");
 });

@@ -26,14 +26,20 @@
           </button>
         </div>
 
-        <label>طول (سانتی‌متر)</label>
-        <input type="number" id="length" />
-
-        <label>عرض (سانتی‌متر)</label>
-        <input type="number" id="width" />
-
-        <label>ارتفاع (سانتی‌متر)</label>
-        <input type="number" id="height" />
+        <div class="input-row">
+          <div class="input-group">
+            <label for="length">طول</label>
+            <input type="number" id="length" placeholder="سانتی‌متر" />
+          </div>
+          <div class="input-group">
+            <label for="width">عرض</label>
+            <input type="number" id="width" placeholder="سانتی‌متر" />
+          </div>
+          <div class="input-group">
+            <label for="height">ارتفاع</label>
+            <input type="number" id="height" placeholder="سانتی‌متر" />
+          </div>
+        </div>
 
         <label>تعداد</label>
         <input type="number" id="quantity" value="1" />
@@ -49,5 +55,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="weight.js"></script>
   </body>
 </html>
