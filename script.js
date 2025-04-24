@@ -81,3 +81,14 @@ document
     document.getElementById("weight-quantity").value = "1";
     document.getElementById("weight-result").innerText = "وزن:";
   });
+  document.getElementById("back-to-volume").addEventListener("click", () => {
+    // نمایش کارت حجم و مخفی کردن کارت وزن
+    volumeCard.style.display = "block";
+    weightCard.style.display = "none";
+  
+    // تغییر دکمه‌ها
+    volumeModeButton.classList.add("active");
+    weightModeButton.classList.remove("active");
+  });
+  
+

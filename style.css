@@ -159,3 +159,11 @@ button#clear-btn:hover {
 
 
 }
+button#clear-weight-btn {
+    background: #dc3545;
+    
+}
+button#back-to-volume {
+    background: #5f7174;
+    
+}
