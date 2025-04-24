@@ -16,25 +16,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // Container volume in CBM
   const containerVolume = 67.5;
 
-  // Function to format number with thousand separators
+  // Function to format numbers with thousand separators
   function formatNumber(input) {
-    // Get cursor position
-    const cursorPosition = input.selectionStart;
-
     // Remove all non-digit characters
-    let value = input.value.replace(/[^\d]/g, "");
+    let value = input.value.replace(/\D/g, "");
 
     // Add thousand separators
     value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // Update input value
+    // Update the input value
     input.value = value;
-
-    // Restore cursor position
-    const newCursorPosition =
-      cursorPosition + (value.length - input.value.length);
-    input.setSelectionRange(newCursorPosition, newCursorPosition);
   }
+
+  // Add input event listeners for number formatting
+  inputs.quantity.addEventListener("input", function(e) {
+    formatNumber(this);
+  });
+
+  document.getElementById("shipping-cost").addEventListener("input", function(e) {
+    formatNumber(this);
+  });
 
   // Add input event listener for CBM price
   cbmPrice.addEventListener("input", (e) => formatNumber(e.target));
@@ -71,9 +72,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Update results
-    document.getElementById('total-volume').textContent = `حجم کل کالا: ${formatNumber(cbm)} متر مکعب`;
-    document.getElementById('container-percentage').textContent = `درصد حجم کانتینر: ${formatNumber(ratio)}%`;
-    document.getElementById('total-price').textContent = `کرایه کل کالا: ${formatNumber(price)} تومان`;
+    document.getElementById(
+      "total-volume"
+    ).textContent = `حجم کل کالا: ${formatNumber(cbm)} متر مکعب`;
+    document.getElementById(
+      "container-percentage"
+    ).textContent = `درصد حجم کانتینر: ${formatNumber(ratio)}%`;
+    document.getElementById(
+      "total-price"
+    ).textContent = `کرایه کل کالا: ${formatNumber(price)} تومان`;
   });
 
   clearBtn.addEventListener("click", () => {

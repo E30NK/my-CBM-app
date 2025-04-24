@@ -30,10 +30,20 @@
           <p>کانتینر 40 فوت (67.5 CBM)</p>
         </div>
 
-        <div class="input-group">
-          <label for="cbm-price">قیمت هر CBM (تومان)</label>
-          <input type="text" id="cbm-price" />
+        <div class="input-row">
+          <div class="input-group">
+            <label for="quantity">تعداد کل فاکتور شما</label>
+            <input type="text" id="quantity" value="1" />
+          </div>
+
+          <div class="input-group">
+            <label for="shipping-cost">کرایه هر CBM (تومان)</label>
+            <input type="text" id="shipping-cost" />
+          </div>
         </div>
+
+        <hr class="divider" />
+        <p class="dimension-label">فیلدهای زیر برای ابعاد یک کارتن هستند</p>
 
         <div class="input-row">
           <div class="input-group">
@@ -50,11 +60,10 @@
           </div>
         </div>
 
-        <label for="quantity">تعداد</label>
-        <input type="number" id="quantity" value="1" />
-
-        <button id="calc-btn">محاسبه</button>
-        <button id="clear-btn">پاک کردن</button>
+        <div class="button-row">
+          <button id="calc-btn">محاسبه</button>
+          <button id="clear-btn">پاک کردن</button>
+        </div>
 
         <!-- دکمه جدید برای رفتن به کارت وزن -->
 
@@ -67,6 +76,5 @@
 
     <script src="script.js"></script>
     <script src="weight.js"></script>
-    
   </body>
 </html>

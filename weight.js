@@ -1,13 +1,11 @@
-const elements = {
-  weightCalcBtn: document.getElementById("weight-calc-btn"),
-  clearWeightBtn: document.getElementById("clear-weight-btn"),
-  weightQuantity: document.getElementById("weight-quantity"),
-  weightResult: document.getElementById("weight-result"),
-  shippingResult: document.getElementById("shipping-result"),
-  shippingCost: document.getElementById("shipping-cost"),
-  mainMenu: document.getElementById("main-menu"),
-  subMenu: document.getElementById("sub-menu"),
-};
+// Get DOM elements
+const weightInput = document.getElementById("weight");
+const quantityInput = document.getElementById("weight-quantity");
+const shippingCostInput = document.getElementById("shipping-cost");
+const calcBtn = document.getElementById("weight-calc-btn");
+const clearBtn = document.getElementById("clear-weight-btn");
+const weightResult = document.getElementById("weight-result");
+const shippingResult = document.getElementById("shipping-result");
 
 // Function to format number with thousand separators
 function formatNumber(input) {
@@ -29,92 +27,64 @@ function formatNumber(input) {
   input.setSelectionRange(newCursorPosition, newCursorPosition);
 }
 
-function updateWeightResult(weight, quantity, shippingCost) {
-  if (isNaN(weight) || isNaN(quantity) || quantity <= 0) {
-    alert("لطفاً تعداد معتبر و زیرمجموعه انتخاب کنید!");
-    return;
-  }
+// Function to format number with thousand separators
+function formatNumberWithSeparators(num) {
+  // Convert to string and remove any existing commas
+  let str = num.toString().replace(/,/g, "");
+
+  // Add thousand separators
+  str = str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+  return str;
+}
+
+// Calculate total weight and shipping cost
+function calculateWeight() {
+  // Remove commas before calculation
+  const weight = parseFloat(weightInput.value.replace(/,/g, "")) || 0;
+  const quantity = parseInt(quantityInput.value.replace(/,/g, "")) || 0;
+  const shippingCost =
+    parseFloat(shippingCostInput.value.replace(/,/g, "")) || 0;
+
   const totalWeight = weight * quantity;
-  elements.weightResult.textContent = `وزن کل: ${totalWeight} کیلوگرم`;
+  const totalShippingCost = totalWeight * shippingCost;
 
-  if (shippingCost && !isNaN(shippingCost) && shippingCost > 0) {
-    const totalShipping = totalWeight * shippingCost;
-    elements.shippingResult.textContent = `کرایه کل: ${totalShipping.toLocaleString()} تومان`;
-  } else {
-    elements.shippingResult.textContent = "کرایه کل:";
-  }
-}
+  // Format weight with 2 decimal places and thousand separators
+  const formattedWeight = formatNumberWithSeparators(totalWeight.toFixed(2));
+  weightResult.textContent = `وزن: ${formattedWeight} کیلوگرم`;
 
-function clearWeightForm() {
-  elements.subMenu.selectedIndex = 0;
-  elements.weightQuantity.value = "1";
-  elements.shippingCost.value = "";
-  elements.weightResult.textContent = "وزن:";
-  elements.shippingResult.textContent = "کرایه کل:";
-}
-
-function loadSubMenu(selectedCategory) {
-  elements.subMenu.innerHTML =
-    '<option value="">لطفاً یک زیرمجموعه انتخاب کنید</option>';
-
-  if (!selectedCategory) return;
-
-  fetch(`${selectedCategory}.txt`)
-    .then((response) => response.text())
-    .then((data) => {
-      data.split("\n").forEach((line) => {
-        const [productName, weight] = line.split(":");
-        if (!productName || !weight) return;
-
-        const option = document.createElement("option");
-        option.value = productName.trim();
-        option.textContent = `${productName.trim()} (${weight.trim()} کیلوگرم)`;
-        option.setAttribute("data-weight", weight.trim());
-        elements.subMenu.appendChild(option);
-      });
-    })
-    .catch((error) => console.error("خطا در بارگذاری زیرمجموعه‌ها:", error));
-}
-
-// Load initial categories
-fetch("categories.txt")
-  .then((response) => response.text())
-  .then((data) => {
-    data.split("\n").forEach((line) => {
-      const [value, text] = line.split(",");
-      if (!value || !text) return;
-
-      const option = document.createElement("option");
-      option.value = value.trim();
-      option.textContent = text.trim();
-      elements.mainMenu.appendChild(option);
-    });
-  })
-  .catch((error) => console.error("خطا در بارگذاری دسته‌ها:", error));
-
-// Event Listeners
-elements.mainMenu.addEventListener("change", (e) =>
-  loadSubMenu(e.target.value)
-);
-
-// Add input event listener for shipping cost
-elements.shippingCost.addEventListener("input", (e) => formatNumber(e.target));
-
-elements.weightCalcBtn.addEventListener("click", () => {
-  const selectedOption =
-    elements.subMenu.options[elements.subMenu.selectedIndex];
-
-  if (!selectedOption.value) {
-    alert("لطفاً یک زیرمجموعه انتخاب کنید!");
-    return;
-  }
-
-  const weight = parseFloat(selectedOption.getAttribute("data-weight"));
-  const quantity = parseInt(elements.weightQuantity.value);
-  const shippingCost = parseFloat(
-    elements.shippingCost.value.replace(/,/g, "")
+  // Format shipping cost with thousand separators
+  const formattedShippingCost = formatNumberWithSeparators(
+    totalShippingCost.toFixed(0)
   );
-  updateWeightResult(weight, quantity, shippingCost);
+  shippingResult.textContent = `کرایه کل: ${formattedShippingCost} تومان`;
+}
+
+// Clear all inputs and results
+function clearInputs() {
+  weightInput.value = "";
+  quantityInput.value = "1";
+  shippingCostInput.value = "";
+  weightResult.textContent = "وزن:";
+  shippingResult.textContent = "کرایه کل:";
+}
+
+// Event listeners
+calcBtn.addEventListener("click", calculateWeight);
+clearBtn.addEventListener("click", clearInputs);
+
+// Add input event listeners for real-time calculation and formatting
+weightInput.addEventListener("input", (e) => {
+  formatNumber(e.target);
+  calculateWeight();
 });
 
-elements.clearWeightBtn.addEventListener("click", clearWeightForm);
+quantityInput.addEventListener("input", (e) => {
+  formatNumber(e.target);
+  calculateWeight();
+});
+
+shippingCostInput.addEventListener("input", (e) => {
+  formatNumber(e.target);
+  calculateWeight();
+});

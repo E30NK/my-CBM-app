@@ -441,7 +441,8 @@ option[value=""] {
         padding: 10px;
     }
 
-    input, select {
+    input,
+    select {
         padding: 10px;
         margin: 5px 0;
     }
@@ -482,8 +483,35 @@ option[value=""] {
         padding: 8px;
     }
 
-    input, select {
+    input,
+    select {
         padding: 8px;
         margin: 4px 0;
     }
+}
+
+.button-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.button-row button {
+    flex: 1;
+    width: 100%;
+}
+
+.divider {
+    border: none;
+    border-top: 2px dashed #e0e0e0;
+    margin: 15px auto;
+    width: 50%;
+}
+
+.dimension-label {
+    color: #666;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 15px;
 }
