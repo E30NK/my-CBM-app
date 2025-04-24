@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاسبه وزن</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card" id="weight-card">
+        <h2 class="card-title">محاسبه کرایه کالا (وزنی)</h2>
+
+        <label class="label-1">انتخاب کالا</label>
+        <select id="product-select">
+          <option value="product1" data-weight="5">کالا 1 (5 کیلوگرم)</option>
+          <option value="product2" data-weight="10">کالا 2 (10 کیلوگرم)</option>
+          <option value="product3" data-weight="7">کالا 3 (7 کیلوگرم)</option>
+        </select>
+
+        <label class="label-2">تعداد</label>
+        <input type="number" id="weight-quantity" value="1" />
+
+        <button id="weight-calc-btn">محاسبه وزن</button>
+        <button id="clear-weight-btn">پاک کردن وزن</button>
+        <button id="back-to-volume" onclick="window.location.href='index.html'">برگشت به کارت حجم</button>
+
+        <div class="result" id="weight-result">وزن:</div>
+        <h4 class="designer-inf">طراحی و توسعه توسط: E30NK</h4>
+      </div>
+    </div>
+    <script src="weight.js"></script>
+  </body>
+</html>
