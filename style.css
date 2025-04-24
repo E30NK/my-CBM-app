@@ -178,6 +178,7 @@ button#back-to-volume {
     font-size: 14px;
     max-width: 100% !important;
     text-align: center;
+    color: #666;
 }
 
 .goods {
@@ -198,6 +199,7 @@ select {
     transition: border-color 0.3s ease;
     max-width: 100% !important;
     text-align: center;
+    color: #666;
 }
 
 /* افکت هنگام هاور یا فوکوس روی منو */
@@ -249,6 +251,12 @@ button:hover {
 option {
     font-family: Vazirmatn;
     text-align: center;
+    color: #333;
+}
+
+option[value=""] {
+    color: #666;
+    font-style: italic;
 }
 
 .container-info {
@@ -314,6 +322,17 @@ option {
         max-width: 100% !important;
         text-align: center;
         padding: 8px;
+        color: #666;
+    }
+
+    #weight-card select option {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    #weight-card select option[value=""] {
+        color: #666;
+        font-style: italic;
     }
 
     #weight-card .input-group label {
@@ -349,6 +368,17 @@ option {
         max-width: 100% !important;
         text-align: center;
         padding: 6px;
+        color: #666;
+    }
+
+    #weight-card select option {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    #weight-card select option[value=""] {
+        color: #666;
+        font-style: italic;
     }
 
     #weight-card .input-group input {
