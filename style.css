@@ -36,6 +36,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 40px;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .card {
@@ -124,17 +129,18 @@ select:focus {
 
 .input-row .input-group input {
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 5px;
     width: 100%;
+    padding: 12px;
+    height: 45px;
 }
 
-.unit-text {
-    text-align: center;
+/* Placeholder styles */
+input::placeholder {
+    color: #999;
     font-size: 12px;
-    color: #666;
-    margin-top: -5px;
-    width: 100%;
+    opacity: 1;
 }
 
 /* Buttons */
@@ -412,14 +418,16 @@ option[value=""] {
         padding: 0;
         min-height: 100vh;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .container {
         width: 100%;
         max-width: 100%;
-        padding: 10px;
-        margin-top: 0;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
     .card {
@@ -468,7 +476,8 @@ option[value=""] {
 
 @media (max-width: 480px) {
     .container {
-        padding: 5px;
+        margin: 15px;
+        padding: 15px;
     }
 
     .card {
@@ -536,4 +545,47 @@ option[value=""] {
 
 h2 {
     margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .input-row .input-group input {
+        font-size: 14px;
+        height: 50px;
+    }
+
+    input::placeholder {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input-row .input-group input {
+        font-size: 12px;
+        height: 45px;
+    }
+
+    input::placeholder {
+        font-size: 11px;
+    }
+}
+
+.input-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-group label {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+    height: 45px;
+    font-size: 14px;
 }
