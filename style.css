@@ -1,20 +1,15 @@
 @font-face {
     font-family: 'Vazirmatn';
     src: url(./font/Vazirmatn-Medium.ttf);
-
-
 }
 
-/* اعمال box-sizing برای همه المان‌ها */
-
-
+/* Reset and Base Styles */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
-/* تنظیمات کلی برای بدنه */
 body {
     font-family: 'Vazirmatn', sans-serif;
     background: #f1f1f1;
@@ -26,7 +21,7 @@ body {
     direction: rtl;
 }
 
-/* کانتینر اصلی که تمام محتوا رو داخل خودش قرار می‌ده */
+/* Layout */
 .container {
     width: 100%;
     display: flex;
@@ -34,14 +29,12 @@ body {
     align-items: center;
 }
 
-/* تنظیمات برای کارت */
 .card {
     background: white;
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
-    /* اینجا اندازه ثابت کارت است */
     text-align: right;
 }
 
@@ -49,7 +42,7 @@ body {
     text-align: center;
 }
 
-/* تنظیمات برای دکمه های بالا کارت */
+/* Mode Buttons */
 .mode-buttons {
     display: flex;
     justify-content: space-between;
@@ -77,18 +70,47 @@ body {
     background-color: #0069d9;
 }
 
-
-/* تنظیمات برای ورودی‌ها */
-input {
+/* Form Elements */
+input,
+select {
     width: 100%;
     padding: 10px;
     margin: 6px 0;
-    /* فاصله‌ی یکنواخت برای تمام ورودی‌ها */
     border: 1px solid #ccc;
     border-radius: 6px;
+    font-family: 'Vazirmatn';
 }
 
-/* تنظیمات دکمه‌ها */
+select:hover,
+select:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.input-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-group {
+    flex: 1;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.input-group input {
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Buttons */
 button {
     width: 100%;
     padding: 10px;
@@ -99,35 +121,28 @@ button {
     cursor: pointer;
     margin-top: 10px;
     font-family: 'Vazirmatn';
-
-}
-
-/* button:hover {
-    background: #218838;
-} */
-
-button:active {
-    transform: scale(0.95);
     transition: transform 0.1s ease;
 }
 
+button:active {
+    transform: scale(0.95);
+}
 
-
-button#clear-btn {
+button#clear-btn,
+button#clear-weight-btn {
     background: #dc3545;
-    /* رنگ قرمز برای دکمه پاک کردن */
 }
 
-button#clear-btn:hover {
-    background: #c82333;
+button#back-to-volume {
+    background: #5f7174;
 }
 
-/* نتیجه محاسبه */
+/* Results and Info */
 .result {
     margin-top: 12px;
-    font-weight: bold;
-
-
+    font-weight: normal;
+    font-size: 15px;
+    color: #495057;
 }
 
 .designer-inf {
@@ -137,113 +152,134 @@ button#clear-btn:hover {
     font-size: 10px;
 }
 
-.label-2 {
-    display: block;
-}
-
-.label-1 {
-    display: block;
-}
-
-#product-select {
-
+/* Menu Styles */
+#main-menu,
+#sub-menu {
     width: 100%;
-    height: 40px;
-    padding: 10px;
+    height: 45px;
+    padding: 12px;
     border-radius: 5px;
     border: 1px solid #efefef;
     font-family: Vazirmatn;
     margin: 7px 0;
-
-
-
-
-}
-
-button#clear-weight-btn {
-    background: #dc3545;
-
-}
-
-button#back-to-volume {
-    background: #5f7174;
-
-
-}
-
-.input-row {
-    display: flex;
-    /* ورودی‌ها را در یک ردیف قرار می‌دهد */
-    justify-content: space-between;
-    /* فاصله یکنواخت بین ورودی‌ها */
-    align-items: center;
-    /* ترازبندی عمودی */
-    gap: 10px;
-    /* فاصله بین گروه‌ها */
-}
-
-.input-group {
-    flex: 1;
-    /* اندازه مساوی برای هر گروه */
-}
-
-.input-group label {
-    display: block;
-    /* نمایش برچسب بالای ورودی */
-    margin-bottom: 5px;
-    /* فاصله بین برچسب و ورودی */
     font-size: 14px;
 }
 
-.input-group input {
+.goods {
+    margin: 10px 0;
+}
+
+/* استایل کلی برای منوها */
+select {
     width: 100%;
-    /* ورودی تمام عرض گروه را اشغال می‌کند */
-    padding: 8px;
-    /* فاصله داخلی برای ورودی */
+    max-width: 300px;
+    padding: 12px;
+    margin: 10px 0;
+    font-size: 14px;
+    height: 45px;
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-family: 'Vazirmatn', sans-serif;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease;
 }
 
-.input-row {
-    display: flex;
-    /* نمایش المان‌ها در یک ردیف */
-    justify-content: space-between;
-    /* فاصله یکنواخت بین المان‌ها */
-    align-items: center;
-    /* تراز عمودی */
-    gap: 10px;
-    /* فاصله بین فیلدها */
+/* افکت هنگام هاور یا فوکوس روی منو */
+select:hover,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #ffffff;
 }
 
-.input-group {
-    flex: 1;
-    /* هر گروه اندازه مساوی خواهد داشت */
-}
-
-.input-group label {
-    display: block;
-    /* نمایش برچسب‌ها بالای ورودی */
-    font-family: 'Vazirmatn', sans-serif;
-    /* استفاده از فونت هماهنگ */
-    font-size: 12px;
-    /* اندازه فونت کوچک‌تر */
+/* استایل برای برچسب‌ها */
+label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 5px;
     margin-bottom: 5px;
-    /* فاصله پایین برچسب */
-    text-align: center;
-    /* تراز متن برچسب */
+    display: block;
+    color: #333;
 }
 
-.input-group input {
-    width: 100%;
-    /* ورودی به اندازه کامل ظرف خود */
-    padding: 8px;
-    font-size: 12px;
-    /* اندازه فونت ورودی کوچک‌تر */
-    border: 1px solid #ccc;
-    border-radius: 6px;
+/* استایل برای بخش کل فرم */
+form {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* دکمه‌ها */
+button {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+option {
+    font-family: Vazirmatn;
+}
+
+.container-info {
     text-align: center;
-    /* متن ورودی در مرکز */
-    font-family: 'Vazirmatn', sans-serif;
-    /* فونت هماهنگ */
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.container-info p {
+    margin: 0;
+    color: #495057;
+    font-size: 14px;
+}
+
+/* Weight Calculator Styles */
+.weight-calculator {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.weight-calculator h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.weight-calculator .input-group {
+    margin-bottom: 20px;
+}
+
+.weight-calculator .input-group label {
+    display: block;
+    margin-bottom: 10px !important;
+    color: #495057;
+    font-size: 14px;
+}
+
+.weight-calculator .input-group input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px !important;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 14px;
 }
