@@ -1,11 +1,11 @@
 // اطمینان از اینکه کد بعد از بارگذاری کامل المان‌های HTML اجرا می‌شود
 document.addEventListener("DOMContentLoaded", () => {
   const calcBtn = document.getElementById("calc-btn");
+  const clearBtn = document.getElementById("clear-btn");
   const resultDiv = document.getElementById("result");
   const containerResultDiv = document.getElementById("container-result");
   const priceResultDiv = document.getElementById("price-result");
-  const clearBtn = document.getElementById("clear-btn");
-  const cbmPrice = document.getElementById("cbm-price");
+  const shippingCost = document.getElementById("shipping-cost");
   const inputs = {
     length: document.getElementById("length"),
     width: document.getElementById("width"),
@@ -29,23 +29,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add input event listeners for number formatting
-  inputs.quantity.addEventListener("input", function(e) {
+  inputs.quantity.addEventListener("input", function (e) {
     formatNumber(this);
   });
 
-  document.getElementById("shipping-cost").addEventListener("input", function(e) {
+  shippingCost.addEventListener("input", function (e) {
     formatNumber(this);
   });
-
-  // Add input event listener for CBM price
-  cbmPrice.addEventListener("input", (e) => formatNumber(e.target));
 
   calcBtn.addEventListener("click", () => {
     const values = {
       length: parseFloat(inputs.length.value),
       width: parseFloat(inputs.width.value),
       height: parseFloat(inputs.height.value),
-      quantity: parseInt(inputs.quantity.value),
+      quantity: parseInt(inputs.quantity.value.replace(/,/g, "")),
     };
 
     if (Object.values(values).some((val) => isNaN(val) || val <= 0)) {
@@ -63,31 +60,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const ratio = (cbm / containerVolume) * 100;
     containerResultDiv.innerText = `درصد حجم کانتینر: ${ratio.toFixed(2)}%`;
 
-    // Calculate total price if CBM price is entered
-    if (cbmPrice.value) {
-      const price = parseFloat(cbmPrice.value.replace(/,/g, "")) * cbm;
+    // Calculate total price if shipping cost is entered
+    if (shippingCost.value) {
+      const price = parseFloat(shippingCost.value.replace(/,/g, "")) * cbm;
       priceResultDiv.innerText = `کرایه کل کالا: ${price.toLocaleString()} تومان`;
     } else {
       priceResultDiv.innerText = "کرایه کل کالا:";
     }
-
-    // Update results
-    document.getElementById(
-      "total-volume"
-    ).textContent = `حجم کل کالا: ${formatNumber(cbm)} متر مکعب`;
-    document.getElementById(
-      "container-percentage"
-    ).textContent = `درصد حجم کانتینر: ${formatNumber(ratio)}%`;
-    document.getElementById(
-      "total-price"
-    ).textContent = `کرایه کل کالا: ${formatNumber(price)} تومان`;
   });
 
   clearBtn.addEventListener("click", () => {
     Object.values(inputs).forEach((input) => {
       input.value = input.id === "quantity" ? "1" : "";
     });
-    cbmPrice.value = "";
+    shippingCost.value = "";
     resultDiv.innerText = "حجم:";
     containerResultDiv.innerText = "نسبت به کانتینر:";
     priceResultDiv.innerText = "قیمت کل:";
