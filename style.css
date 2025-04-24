@@ -41,12 +41,42 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 300px;
+    /* اینجا اندازه ثابت کارت است */
     text-align: right;
 }
 
 .card-title {
     text-align: center;
 }
+
+/* تنظیمات برای دکمه های بالا کارت */
+.mode-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px;
+}
+
+.mode-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 8px 0;
+    background-color: #4abfea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Vazirmatn';
+    font-size: 14px;
+}
+
+.mode-btn.active {
+    background-color: #0056b3;
+}
+
+.mode-btn:hover {
+    background-color: #0069d9;
+}
+
 
 /* تنظیمات برای ورودی‌ها */
 input {
@@ -96,12 +126,36 @@ button#clear-btn:hover {
 .result {
     margin-top: 12px;
     font-weight: bold;
-    
+
 
 }
-.designer-inf{
+
+.designer-inf {
     margin-top: 60px;
     color: #978d8d;
     text-align: center;
     font-size: 10px;
+}
+
+.label-2 {
+    display: block;
+}
+
+.label-1 {
+    display: block;
+}
+
+#product-select {
+
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #efefef;
+    font-family: Vazirmatn;
+    margin: 7px 0;
+
+
+
+
 }
