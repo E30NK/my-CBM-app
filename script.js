@@ -16,6 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // Container volume in CBM
   const containerVolume = 67.5;
 
+  // Load saved data if it exists
+  if (localStorage.getItem("length")) {
+    inputs.length.value = localStorage.getItem("length");
+    inputs.width.value = localStorage.getItem("width");
+    inputs.height.value = localStorage.getItem("height");
+    inputs.quantity.value = localStorage.getItem("quantity") || "1";
+    shippingCost.value = localStorage.getItem("shippingCost") || "";
+  }
+
   // Function to format numbers with thousand separators
   function formatNumber(input) {
     // Remove all non-digit characters
@@ -50,15 +59,23 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Store dimensions in localStorage
+    localStorage.setItem("length", values.length);
+    localStorage.setItem("width", values.width);
+    localStorage.setItem("height", values.height);
+    localStorage.setItem("quantity", inputs.quantity.value);
+    localStorage.setItem("shippingCost", shippingCost.value);
+
     // Calculate total volume
     const cbm =
       ((values.length * values.width * values.height) / 1000000) *
       values.quantity;
     resultDiv.innerText = `حجم کل کالا: ${cbm.toFixed(2)} متر مکعب`;
 
-    // Calculate container ratio
-    const ratio = (cbm / containerVolume) * 100;
-    containerResultDiv.innerText = `درصد حجم کانتینر: ${ratio.toFixed(2)}%`;
+    // Calculate how many units can fit in a container
+    const unitVolume = (values.length * values.width * values.height) / 1000000;
+    const unitsPerContainer = Math.floor(containerVolume / unitVolume);
+    containerResultDiv.innerText = `تعداد واحد در کانتینر: ${unitsPerContainer} واحد`;
 
     // Calculate total price if shipping cost is entered
     if (shippingCost.value) {
@@ -75,7 +92,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     shippingCost.value = "";
     resultDiv.innerText = "حجم:";
-    containerResultDiv.innerText = "نسبت به کانتینر:";
+    containerResultDiv.innerText = "تعداد واحد در کانتینر:";
     priceResultDiv.innerText = "قیمت کل:";
+
+    // Clear localStorage when clear button is clicked
+    localStorage.removeItem("length");
+    localStorage.removeItem("width");
+    localStorage.removeItem("height");
+    localStorage.removeItem("quantity");
+    localStorage.removeItem("shippingCost");
   });
 });

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>محاسبه کرایه کالا بر اساس قیمت کانتینر</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card" id="container-price-card">
+        <h2 class="card-title">محاسبه کرایه کالا بر اساس قیمت کانتینر</h2>
+
+        <div class="input-group">
+          <label for="container-price">قیمت روز یک کانتینر (تومان)</label>
+          <input
+            type="text"
+            id="container-price"
+            placeholder="قیمت کانتینر را وارد کنید"
+          />
+        </div>
+
+        <div class="button-row">
+          <button id="calc-container-price">محاسبه</button>
+          <button id="clear-container-price">پاک کردن</button>
+        </div>
+
+        <button id="back-to-main" onclick="window.location.href='index.html'">
+          بازگشت به صفحه اصلی
+        </button>
+
+        <div class="result" id="units-per-container">
+          تعداد واحد در کانتینر:
+        </div>
+        <div class="result" id="price-per-unit">قیمت هر واحد:</div>
+        <h4 class="designer-inf">طراحی و توسعه توسط: E30NK</h4>
+      </div>
+    </div>
+
+    <script src="container-price.js"></script>
+  </body>
+</html>
